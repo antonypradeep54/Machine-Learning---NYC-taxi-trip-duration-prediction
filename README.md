@@ -32,5 +32,7 @@ Features & methods
 
 Evaluation
 - Metric: Root Mean Squared Log Error (RMSLE).
-- Example result (from sample run): Validation RMSLE ≈ 0.0739 (excellent).
+- The previously reported validation RMSLE of `0.0739` is unverified and should not be treated as a valid result until the evaluation is rerun on the original trip-duration scale.
+- If the model is trained on `log1p(trip_duration)`, convert the validation target and predictions back with `expm1` before computing RMSLE. Ensure predictions are non-negative.
+- Dataset validation should report extreme durations for investigation; do not silently remove them without a documented rule.
 
