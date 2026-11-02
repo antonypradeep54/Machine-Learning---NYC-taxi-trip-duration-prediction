@@ -15,4 +15,23 @@
 - Compare against a simple baseline in Package 03 before making quality claims.
 
 ## Status
-The corrected model has **not** been rerun in this pull request. No verified model score is available. Do not reuse the historical 0.0739 RMSLE.
+The project owner has now completed a full-dataset Colab run; see the reported evidence below. Independent reproduction remains outstanding. Do not reuse the historical 0.0739 RMSLE.
+
+## Full-dataset Google Colab execution (reported 2026-11-02)
+
+Execution evidence supplied by the project owner from Google Colab (not independently rerun by the reviewer):
+
+| Item | Value |
+| --- | --- |
+| Python | 3.13.16 |
+| NumPy | 2.1.3 |
+| pandas | 2.2.3 |
+| scikit-learn | 1.6.1 |
+| Dataset rows | 729,322 |
+| Training rows | 583,457 |
+| Validation rows | 145,865 |
+| Model | RandomForestRegressor(n_jobs=-1, random_state=42) |
+| Validation RMSLE (seconds scale) | 0.509357 |
+| Validation MAE | 375.72 seconds (6.26 minutes) |
+
+The reported split is consistent with 80/20 random splitting. These are observed validation metrics, **not** test-set performance or a production accuracy guarantee. The dataset checksum, Colab execution artifact and independent rerun are not yet recorded. The old 0.0739 RMSLE remains unverified. Baseline and chronological comparisons are deferred to Package 03.
