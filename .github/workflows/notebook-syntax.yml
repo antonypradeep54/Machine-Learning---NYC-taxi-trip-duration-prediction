@@ -1,0 +1,28 @@
+name: Notebook syntax validation
+on:
+  push:
+  pull_request:
+jobs:
+  syntax:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Validate notebook JSON and compile code cells
+        run: |
+          python - <<'PY'
+          import ast
+          import json
+          from pathlib import Path
+          notebook = json.loads(Path("NYC_Taxi_Trip_Duration.ipynb").read_text())
+          for index, cell in enumerate(notebook["cells"]):
+              if cell["cell_type"] == "code":
+                  code = "".join(cell.get("source", []))
+                  try:
+                      ast.parse(code)
+                  except SyntaxError as exc:
+                      raise SystemExit(f"Syntax error in cell {index}: {exc}")
+          print("Notebook code cells parse successfully")
+          PY
