@@ -48,3 +48,14 @@ All values below were supplied from Google Colab by the project owner. Independe
 | Chronological 80/20 | Random Forest | 0.521922 | 6.43 |
 
 The Random Forest improves RMSLE over the median baseline by approximately 36.0% on the random split and 35.7% on the chronological split. Chronological Random Forest RMSLE is approximately 2.5% higher than the random-split value, but the validation samples differ. These are holdout validation results, not independent test or production results. Do not claim that temporal robustness is established by this single split.
+
+## Package 03 chronological absolute-error diagnostics (owner-reported, 2026-11-02)
+
+| Measure | Absolute error (minutes) |
+| --- | ---: |
+| 50th percentile | 2.924140 |
+| 90th percentile | 10.253924 |
+| 95th percentile | 14.427540 |
+| 99th percentile | 28.006947 |
+
+Percentage of chronological validation predictions with absolute error exceeding 15 minutes: **4.6%**. These diagnostics are descriptive, are based on the single chronological holdout, and are not production performance claims. Independent rerun remains outstanding.
