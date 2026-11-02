@@ -34,11 +34,11 @@ Execution evidence supplied by the project owner from Google Colab (not independ
 | Validation RMSLE (seconds scale) | 0.509357 |
 | Validation MAE | 375.72 seconds (6.26 minutes) |
 
-The reported split is consistent with 80/20 random splitting. These are observed validation metrics, **not** test-set performance or a production accuracy guarantee. The dataset checksum, Colab execution artifact and independent rerun are not yet recorded. The old 0.0739 RMSLE remains unverified. Package 03 baseline and chronological comparison results are recorded below; error diagnostics are pending.
+The reported split is consistent with 80/20 random splitting. These are observed validation metrics, **not** test-set performance or a production accuracy guarantee. The dataset checksum, Colab execution artifact and independent rerun are not yet recorded. The old 0.0739 RMSLE remains unverified. Package 03 baseline, chronological comparison and error diagnostics are recorded below.
 
 ## Package 03 comparisons (owner-reported, 2026-11-02)
 
-All values below were supplied from Google Colab by the project owner. Independent rerun and the chronological absolute-error diagnostic output remain outstanding. Both splits use 583,457 training and 145,865 validation records; the random and chronological validation sets differ.
+All values below were supplied from Google Colab by the project owner. Independent rerun remains outstanding; chronological absolute-error diagnostics are recorded below. Both splits use 583,457 training and 145,865 validation records; the random and chronological validation sets differ.
 
 | Validation split | Model | RMSLE (duration seconds scale) | MAE (minutes) |
 | --- | --- | ---: | ---: |

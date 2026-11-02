@@ -57,7 +57,7 @@ On the chronological validation holdout, the absolute-error distribution was:
    pip install -r requirements.txt
    ```
 
-3. Obtain the original `nyc_taxi_trip_duration.csv` dataset from the source used for the project. The dataset is **not included** in this repository. Place it at `dataset/nyc_taxi_trip_duration.csv`, or upload the file when prompted in Google Colab.
+3. Obtain the original `nyc_taxi_trip_duration.csv` dataset used for this project. **Its authoritative download URL, exact version and checksum have not yet been confirmed; do not assume a similarly named public dataset is identical.** The dataset is **not included** in this repository. Place it at `dataset/nyc_taxi_trip_duration.csv`, or upload the file when prompted in Google Colab.
 4. Open `NYC_Taxi_Trip_Duration.ipynb` locally or via the Colab link above and run cells in order. A full run trains two 100-tree Random Forest models and may take time on CPU.
 5. Compare your printed metrics with the [validation record](docs/validation.md). Results can vary across dataset versions and software environments.
 
@@ -69,11 +69,11 @@ The notebook expects a CSV including `pickup_datetime`, `dropoff_datetime`, `pic
 
 Owner-reported execution: Python **3.13.16**, NumPy **2.1.3**, pandas **2.2.3**, scikit-learn **1.6.1**. Dependency ranges are specified in [requirements.txt](requirements.txt), not locked to an exact environment.
 
-The repository's GitHub Actions workflow checks notebook JSON/code-cell syntax. **It does not execute model training, download the dataset, or reproduce the reported metrics.**
+The repository's GitHub Actions workflow checks notebook JSON/code-cell syntax and runs a **small synthetic-data Random Forest smoke test**. The smoke test checks the feature schema, training, prediction inversion and metrics. **It does not download the NYC dataset, run the full notebook, or reproduce the reported validation metrics.**
 
 ## Limitations and next steps
 
-- The CSV checksum, exact upstream dataset version, saved executed notebook, and independent reproduction have not yet been captured.
+- The authoritative CSV source URL, checksum, exact upstream dataset version, saved executed notebook, and independent reproduction have not yet been captured.
 - Random and chronological validation results are not directly paired because their holdout examples differ.
 - A single chronological holdout is not a substitute for repeated rolling-origin or out-of-time evaluation.
 - No separate untouched final test set is reported; the results are **validation** metrics only.
@@ -88,7 +88,8 @@ The historical **0.0739 RMSLE** sometimes associated with this project is **unve
 - [docs/validation.md](docs/validation.md) — reported execution evidence and limitations
 - [requirements.txt](requirements.txt) — Python dependencies
 - [scripts/validate_dataset.py](scripts/validate_dataset.py) — input dataset validation
-- [.github/workflows/notebook-syntax.yml](.github/workflows/notebook-syntax.yml) — syntax-only CI check
+- [scripts/smoke_test_model.py](scripts/smoke_test_model.py) — fast synthetic model smoke test
+- [.github/workflows/notebook-syntax.yml](.github/workflows/notebook-syntax.yml) — syntax and synthetic model smoke-test CI
 
 ## Portfolio takeaway
 
