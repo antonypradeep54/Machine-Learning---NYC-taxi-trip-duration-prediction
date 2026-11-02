@@ -34,4 +34,28 @@ Execution evidence supplied by the project owner from Google Colab (not independ
 | Validation RMSLE (seconds scale) | 0.509357 |
 | Validation MAE | 375.72 seconds (6.26 minutes) |
 
-The reported split is consistent with 80/20 random splitting. These are observed validation metrics, **not** test-set performance or a production accuracy guarantee. The dataset checksum, Colab execution artifact and independent rerun are not yet recorded. The old 0.0739 RMSLE remains unverified. Baseline and chronological comparisons are deferred to Package 03.
+The reported split is consistent with 80/20 random splitting. These are observed validation metrics, **not** test-set performance or a production accuracy guarantee. The dataset checksum, Colab execution artifact and independent rerun are not yet recorded. The old 0.0739 RMSLE remains unverified. Package 03 baseline and chronological comparison results are recorded below; error diagnostics are pending.
+
+## Package 03 comparisons (owner-reported, 2026-11-02)
+
+All values below were supplied from Google Colab by the project owner. Independent rerun and the chronological absolute-error diagnostic output remain outstanding. Both splits use 583,457 training and 145,865 validation records; the random and chronological validation sets differ.
+
+| Validation split | Model | RMSLE (duration seconds scale) | MAE (minutes) |
+| --- | --- | ---: | ---: |
+| Random 80/20 | Training-median baseline | 0.795762 | 9.40 |
+| Random 80/20 | Random Forest | 0.509357 | 6.26 |
+| Chronological 80/20 | Training-median baseline | 0.811359 | 9.80 |
+| Chronological 80/20 | Random Forest | 0.521922 | 6.43 |
+
+The Random Forest improves RMSLE over the median baseline by approximately 36.0% on the random split and 35.7% on the chronological split. Chronological Random Forest RMSLE is approximately 2.5% higher than the random-split value, but the validation samples differ. These are holdout validation results, not independent test or production results. Do not claim that temporal robustness is established by this single split.
+
+## Package 03 chronological absolute-error diagnostics (owner-reported, 2026-11-02)
+
+| Measure | Absolute error (minutes) |
+| --- | ---: |
+| 50th percentile | 2.924140 |
+| 90th percentile | 10.253924 |
+| 95th percentile | 14.427540 |
+| 99th percentile | 28.006947 |
+
+Percentage of chronological validation predictions with absolute error exceeding 15 minutes: **4.6%**. These diagnostics are descriptive, are based on the single chronological holdout, and are not production performance claims. Independent rerun remains outstanding.
